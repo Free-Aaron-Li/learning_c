@@ -1,3 +1,9 @@
+// Copyright (c) 2024. aaron.
+//
+// This program is under the GPL-3.0 license.
+// if you have not received it or the program has a bug, please let me know:
+// <communicate_aaron@outlook.com>.
+
 #include  "test1.h"
 
 // 完整的gcc编译流程：
@@ -14,7 +20,14 @@ void test1() {
     // test1_4();
     // test1_5();
     // test1_6();
-    test1_7();
+    // test1_7();
+    // test1_8();
+    // test1_9();
+    // test1_10();
+    // test1_11();
+    // test1_12();
+    test1_13();
+    // test1_14();
 }
 
 /* 当fahr=0,20, ..., 300时，分别打印华氏温度与摄氏温度对照表 */
@@ -58,9 +71,33 @@ void InputOutput1() {
     }
 }
 
+/* 字符统计 */
+void StatisticalChars() {
+    // 重定向： ./chapter1 < test1.txt
+    long num_char;
+    for (num_char = 1; getchar() != EOF; ++num_char) {
+    }
+    printf("%ld\n", num_char);
+}
+
+/* 行计数 */
+void StatisticalLines() {
+    int c;
+
+    long num_lines = 1;
+    while ((c = getchar()) != EOF) {
+        if (c == '\n') {
+            ++num_lines;
+        }
+    }
+    printf("%ld\n", num_lines);
+}
+
 void main() { // 定义名为main的函数，不接受参数值
     test1();
-    //FahrCelsius();
-    //FahrCelsiusFloat();
+    // FahrCelsius();
+    // FahrCelsiusFloat();
     // InputOutput1();
+    // StatisticalChars();
+    // StatisticalLines();
 }
