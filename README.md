@@ -6,7 +6,9 @@
 
 # 2. 项目编译与运行
 
-本项目首次采用 [xmake](https://xmake.io/#/) 编译，可参照本项目的 [xmake.lua](./xmake.lua) 查看具体配置，同时项目本身在上传时会根据[钩子脚本](.git/hooks/pre-commit)自动生成 [CMakeLists.txt](./CMakeLists.txt) 文件，以便于使用 CMake 进行编译。
+本项目首次采用 [xmake](https://xmake.io/#/) 编译，可参照本项目的 [xmake.lua](./xmake.lua)
+查看具体配置，同时项目本身在上传时会根据 [钩子脚本](https://gist.github.com/Free-Aaron-Li/8e3657413b1dae407bf60a7e7580e96d)
+自动生成 [CMakeLists.txt](./CMakeLists.txt) 文件，以便于使用 CMake 进行编译。
 
 下面介绍如何进行编译并运行操作
 
@@ -30,7 +32,7 @@ make
 
 ## 2.3 运行
 
-编译生成的可执行文件存放在 [bin](./bin) 目录下。本项目默认生成 Linux 可执行文件。
+编译生成的可执行文件存放在 bin/ 目录下。本项目默认生成 Linux 可执行文件。
 
 ## 3. 参考
 

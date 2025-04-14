@@ -20,6 +20,12 @@
 /**/build/
 /**/CMakeLists.txt.user
 
+# .env
+/**/.env
+
+#  file
+/**/.tmp
+
 # Xmake cache
 .xmake/
 
