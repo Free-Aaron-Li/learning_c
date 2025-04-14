@@ -1,0 +1,29 @@
+# IDE
+/**/.idea/
+/**/.fleet/
+/**/.vscode/
+
+# cache
+/**/.cache/
+
+# bin
+/**/bin/
+
+# docs
+/**/docs/
+
+# Doxygen Generated Docs
+/**/doxygen/
+
+# build
+/**/cmake-build-*/
+/**/build/
+/**/CMakeLists.txt.user
+
+# Xmake cache
+.xmake/
+
+# MacOS Cache
+/**/.DS_Store
+
+
