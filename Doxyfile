@@ -754,8 +754,9 @@ SORT_BY_SCOPE_NAME     = NO
 
 STRICT_PROTO_MATCHING  = NO
 
-# The GENERATE_TODOLIST tag can be used to enable (YES) or disable (NO) the todo
-# list. This list is created by putting \todo commands in the documentation.
+# 这里移除“to\do”标签，防止IDE及Git误判
+# The GENERATE_TODOLIST tag can be used to enable (YES) or disable (NO) the to_do
+# list. This list is created by putting \to_do commands in the documentation.
 # The default value is: YES.
 
 GENERATE_TODOLIST      = YES
