@@ -5,7 +5,46 @@
 # project
 cmake_minimum_required(VERSION 3.15.0)
 cmake_policy(SET CMP0091 NEW)
-project(io_and_char LANGUAGES C)
+project(expression LANGUAGES C)
+
+# target
+add_executable(expression "")
+set_target_properties(expression PROPERTIES OUTPUT_NAME "expression")
+set_target_properties(expression PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+target_include_directories(expression PRIVATE
+    expression/include
+    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+)
+target_include_directories(expression INTERFACE
+    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+)
+target_compile_options(expression PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-m64>
+    $<$<COMPILE_LANGUAGE:CXX>:-m64>
+    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+)
+if(MSVC)
+    target_compile_options(expression PRIVATE $<$<CONFIG:Release>:-O2>)
+else()
+    target_compile_options(expression PRIVATE -O3)
+endif()
+if(MSVC)
+else()
+    target_compile_options(expression PRIVATE -fvisibility=hidden)
+endif()
+if(MSVC)
+    set_property(TARGET expression PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+target_link_options(expression PRIVATE
+    -m64
+)
+target_sources(expression PRIVATE
+    expression/src/main.c
+    expression/src/expression.c
+)
 
 # target
 add_executable(io_and_char "")
@@ -52,10 +91,11 @@ target_sources(io_and_char PRIVATE
 add_executable(learning_c "")
 set_target_properties(learning_c PROPERTIES OUTPUT_NAME "learning_c")
 set_target_properties(learning_c PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-add_dependencies(learning_c io_and_char)
+add_dependencies(learning_c expression io_and_char)
 target_include_directories(learning_c PRIVATE
     build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
     build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+    build/.gens/expression/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(learning_c INTERFACE
     build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
