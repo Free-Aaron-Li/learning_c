@@ -17,6 +17,6 @@ void operator_precedence(void);
 void byte_operation(void);
 
 /** 位运算面试题 */
-void byte_operation_interview_question(void);
+void bit_operation_interview_question(void);
 
 #endif // EXPRESSION_H

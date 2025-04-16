@@ -88,7 +88,7 @@ is_power_of_two(int i) {
     return (i & (i - 1)) == 0;
 }
 void
-byte_operation_interview_question(void) {
+bit_operation_interview_question(void) {
     /* 1. 请判断一个整数是否为奇数？ */
     int i = -1; /* -1 是奇数 */
     /* -1 % 2 = -1 != 1 */

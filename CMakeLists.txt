@@ -43,6 +43,7 @@ target_link_options(expression PRIVATE
 )
 target_sources(expression PRIVATE
     expression/src/main.c
+    expression/src/test.c
     expression/src/expression.c
 )
 

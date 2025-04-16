@@ -4,12 +4,15 @@
 //   if you have not received it or the program has several bugs, please let me
 //   know: <communicate_aaron@outlook.com>.
 #include "expression.h"
+#include "test.h"
 
 void
 test(void) {
     // operator_precedence();
     // byte_operation();
-    byte_operation_interview_question();
+    // bit_operation_interview_question();
+    // bit_operation_extension();
+    calendar_calculation();
 }
 
 int
