@@ -42,8 +42,10 @@ target_link_options(io_and_char PRIVATE
     -m64
 )
 target_sources(io_and_char PRIVATE
+    io_and_char/src/variable_assignment.c
     io_and_char/src/main.c
     io_and_char/src/hello_world.c
+    io_and_char/src/test.c
 )
 
 # target

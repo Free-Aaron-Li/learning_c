@@ -5,8 +5,21 @@
 //   <communicate_aaron@outlook.com>.
 
 #include "io_and_char.h"
+#include "test.h"
+
+int test(void) {
+    //temperature_conversion();
+    //summed_fraction();
+    //escape_sequence_of_characters();
+    //message_length();
+    character_conversion();
+    return 0;
+}
 
 int main(int argc, char **argv) {
-    hello_world();
+    //hello_world();
+    //print_format();
+    //scan_format();
+    test();
     return 0;
 }
