@@ -11,8 +11,8 @@ test(void) {
     // operator_precedence();
     // byte_operation();
     // bit_operation_interview_question();
-    // bit_operation_extension();
-    calendar_calculation();
+    bit_operation_extension();
+    // calendar_calculation();
 }
 
 int

@@ -62,7 +62,7 @@ reversing_last_four_bytes_order(const int n) {
     printf("\n");
 }
 
-/** @brief 选择右移1字节 */
+/** @brief 旋转右移1字节 */
 void
 rotation_shifted_right_one_bytes(const int n) {
     const int left_one_bytes = (n & 0xF) << 12;
@@ -73,12 +73,94 @@ rotation_shifted_right_one_bytes(const int n) {
     printf("\n");
 }
 
+/** @brief 给定一个值不为 0 的整数，请找出值为 1 的最低有效位（last set bit）。
+ */
+int
+get_value_of_last_significant_bit(const int n) {
+    /* 思路一 */
+    // int last_one_bit = 0x1;
+    // while ((n & last_one_bit) == 0) {
+    //     last_one_bit <<= 1;
+    // }
+    // return last_one_bit;
+
+    /* 思路二 */
+    return n & -n;
+}
+
+/** @brief 交换两个变量值（不使用临时中间变量） */
+void
+swap_value(void) {
+    int a = 3, b = 4;
+    /* 利用一对逆运算，来交换两个数 a0，b0
+     * 存在问题，可能导致溢出，且效率低于位运算
+     */
+    a = a + b; /* a1=a0+b0, b1=b0 */
+    b = a - b; /* a2=a0+b0, b2=a1-b1=a0 */
+    a = a - b; /* a3=a2-b2=b0, b2=a0 */
+    printf("a=%d, b=%d\n", a, b);
+
+    /* 利用位运算，^和^是一对逆运算，a ^ b ^ b = a */
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    printf("a=%d, b=%d\n", a, b);
+}
+
+/** @brief 出现一次的元素 */
+void
+value_that_appears_once(void) {
+    const int nums[] = { 1, 4, 2, 1, 2 };
+    /* 异或运算符的特点：交换律与结合律
+     * 0^1^4^2^1^2=0^4=4
+     */
+    int single_num = 0;
+    for (int i = 0; i < 5; i++) {
+        single_num ^= nums[i];
+    }
+    printf("The single number is: %d\n", single_num);
+}
+
+/** @brief 两个单独的元素 */
+void
+value_that_appears_once_plus(void) {
+    const int nums[] = { 1, 2, 1, 3, 2, 5 };
+    int xor = 0; /* exclusive-or 异或 */
+
+    /* 消除重复数字 */
+    for (int i = 0; i < 6; ++i) {
+        xor ^= nums[i];
+    }
+    /* 找出最右侧的1位（两个数的区分点）
+     */
+    const int last_set_bit = xor & -xor;
+
+    /* 根据 last_set_bit 将所有元素分类 */
+    int a = 0, b = 0;
+    for (int i = 0; i < 6; ++i) {
+        /* 分组：一组在 lsp 位上为1，一组为0 */
+        if (nums[i] & last_set_bit) {
+            /* num[i]在 lsp 位为1 */
+            a ^= nums[i];
+        } else {
+            b ^= nums[i];
+        }
+    }
+
+    printf("The single number is: %d, %d\n", a, b);
+}
+
 void
 bit_operation_extension(void) {
     const int n = 0xCAFE;
     least_three_bits_one(n);
     reversing_last_four_bytes_order(n);
     rotation_shifted_right_one_bytes(n);
+    printf("The last significant bit of %d is: %d\n", n,
+           get_value_of_last_significant_bit(n));
+    swap_value();
+    value_that_appears_once();
+    value_that_appears_once_plus();
 }
 
 /** @brief 是否为闰年 */
@@ -164,13 +246,13 @@ two_time_distance(const int year1, const int month1, const int day1,
     return days;
 }
 
+/** @brief 星期名 */
+const char* weekday_names[] = { "Sunday",   "Monday", "Tuesday", "Wednesday",
+                                "Thursday", "Friday", "Saturday" };
 /** @brief 计算当前星期 */
 void
 weekday(const int current_year, const int current_month,
         const int current_day) {
-    const char* weekday_names[] = { "Sunday",    "Monday",   "Tuesday",
-                                    "Wednesday", "Thursday", "Friday",
-                                    "Saturday" };
     const int distance_days = two_time_distance(1970, 1, 1, current_year,
                                                 current_month, current_day);
     printf("Current day is %s\n", weekday_names[(4 + distance_days) % 7]);
