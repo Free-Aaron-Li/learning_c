@@ -4,8 +4,8 @@
 //   if you have not received it or the program has several bugs, please let me know:
 //   <communicate_aaron@outlook.com>.
 
+#include "exercise.h"
 #include "io_and_char.h"
-#include "test.h"
 
 int test(void) {
     //temperature_conversion();

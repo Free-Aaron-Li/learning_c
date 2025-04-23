@@ -3,7 +3,7 @@
 //   This program is under the GPL-3.0 license.
 //   if you have not received it or the program has several bugs, please let me
 //   know: <communicate_aaron@outlook.com>.
-#include "test.h"
+#include "exercise.h"
 
 #define SCALE_FACTOR (5.0f / 9.0f) /* 伸缩因子 */
 #define FREEZING_PT 32.0f          /* 冰点 */
