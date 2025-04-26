@@ -8,43 +8,86 @@ cmake_policy(SET CMP0091 NEW)
 project(expression LANGUAGES C)
 
 # target
-add_executable(expression "")
+add_executable(expression ""
+               function/include/function.h)
 set_target_properties(expression PROPERTIES OUTPUT_NAME "expression")
 set_target_properties(expression PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(expression PRIVATE
-    expression/include
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+                           expression/include
+                           build/.gens/expression/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(expression INTERFACE
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+                           build/.gens/expression/linux/x86_64/release/platform/windows/idl
 )
 target_compile_options(expression PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-m64>
-    $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+                       $<$<COMPILE_LANGUAGE:C>:-m64>
+                       $<$<COMPILE_LANGUAGE:CXX>:-m64>
+                       $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
 )
-if(MSVC)
-    target_compile_options(expression PRIVATE $<$<CONFIG:Release>:-O2>)
-else()
-    target_compile_options(expression PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(expression PRIVATE -fvisibility=hidden)
-endif()
-if(MSVC)
-    set_property(TARGET expression PROPERTY
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+if (MSVC)
+	target_compile_options(expression PRIVATE $<$<CONFIG:Release>:-O2>)
+else ()
+	target_compile_options(expression PRIVATE -O3)
+endif ()
+if (MSVC)
+else ()
+	target_compile_options(expression PRIVATE -fvisibility=hidden)
+endif ()
+if (MSVC)
+	set_property(TARGET expression PROPERTY
+	             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif ()
 target_link_options(expression PRIVATE
-    -m64
+                    -m64
 )
 target_sources(expression PRIVATE
-    expression/src/main.c
-    expression/src/expression.c
-    expression/src/exercise.c
+               expression/src/main.c
+               expression/src/expression.c
+               expression/src/exercise.c
+)
+
+# target
+add_executable(function ""
+               function/src/function.c)
+set_target_properties(function PROPERTIES OUTPUT_NAME "function")
+set_target_properties(function PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+target_include_directories(function PRIVATE
+                           function/include
+                           build/.gens/function/linux/x86_64/release/platform/windows/idl
+)
+target_include_directories(function INTERFACE
+                           build/.gens/function/linux/x86_64/release/platform/windows/idl
+)
+target_compile_options(function PRIVATE
+                       $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+                       $<$<COMPILE_LANGUAGE:C>:-m64>
+                       $<$<COMPILE_LANGUAGE:CXX>:-m64>
+                       $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+)
+if (MSVC)
+	target_compile_options(function PRIVATE $<$<CONFIG:Release>:-O2>)
+else ()
+	target_compile_options(function PRIVATE -O3)
+endif ()
+if (MSVC)
+else ()
+	target_compile_options(function PRIVATE -fvisibility=hidden)
+endif ()
+if (MSVC)
+	set_property(TARGET function PROPERTY
+	             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif ()
+target_link_options(function PRIVATE
+                    -m64
+)
+target_sources(function PRIVATE
+               function/src/main.c
+               function/src/exercise.c
 )
 
 # target
@@ -52,40 +95,41 @@ add_executable(io_and_char "")
 set_target_properties(io_and_char PROPERTIES OUTPUT_NAME "io_and_char")
 set_target_properties(io_and_char PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(io_and_char PRIVATE
-    io_and_char/include
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+                           io_and_char/include
+                           build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(io_and_char INTERFACE
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+                           build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
 )
 target_compile_options(io_and_char PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-m64>
-    $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+                       $<$<COMPILE_LANGUAGE:C>:-m64>
+                       $<$<COMPILE_LANGUAGE:CXX>:-m64>
+                       $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
 )
-if(MSVC)
-    target_compile_options(io_and_char PRIVATE $<$<CONFIG:Release>:-O2>)
-else()
-    target_compile_options(io_and_char PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(io_and_char PRIVATE -fvisibility=hidden)
-endif()
-if(MSVC)
-    set_property(TARGET io_and_char PROPERTY
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+if (MSVC)
+	target_compile_options(io_and_char PRIVATE $<$<CONFIG:Release>:-O2>)
+else ()
+	target_compile_options(io_and_char PRIVATE -O3)
+endif ()
+if (MSVC)
+else ()
+	target_compile_options(io_and_char PRIVATE -fvisibility=hidden)
+endif ()
+if (MSVC)
+	set_property(TARGET io_and_char PROPERTY
+	             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif ()
 target_link_options(io_and_char PRIVATE
-    -m64
+                    -m64
 )
 target_sources(io_and_char PRIVATE
-    io_and_char/src/variable_assignment.c
-    io_and_char/src/main.c
-    io_and_char/src/exercise.c
-    io_and_char/src/hello_world.c
+               io_and_char/src/variable_assignment.c
+               io_and_char/src/main.c
+               io_and_char/src/exercise.c
+               io_and_char/src/hello_world.c
 )
 
 # target
@@ -94,39 +138,40 @@ set_target_properties(learning_c PROPERTIES OUTPUT_NAME "learning_c")
 set_target_properties(learning_c PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 add_dependencies(learning_c statements_and_arrays expression io_and_char)
 target_include_directories(learning_c PRIVATE
-    build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
+                           build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
+                           build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+                           build/.gens/expression/linux/x86_64/release/platform/windows/idl
+                           build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(learning_c INTERFACE
-    build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
+                           build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
 )
 target_compile_options(learning_c PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-m64>
-    $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+                       $<$<COMPILE_LANGUAGE:C>:-m64>
+                       $<$<COMPILE_LANGUAGE:CXX>:-m64>
+                       $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
 )
-if(MSVC)
-    target_compile_options(learning_c PRIVATE $<$<CONFIG:Release>:-O2>)
-else()
-    target_compile_options(learning_c PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(learning_c PRIVATE -fvisibility=hidden)
-endif()
-if(MSVC)
-    set_property(TARGET learning_c PROPERTY
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+if (MSVC)
+	target_compile_options(learning_c PRIVATE $<$<CONFIG:Release>:-O2>)
+else ()
+	target_compile_options(learning_c PRIVATE -O3)
+endif ()
+if (MSVC)
+else ()
+	target_compile_options(learning_c PRIVATE -fvisibility=hidden)
+endif ()
+if (MSVC)
+	set_property(TARGET learning_c PROPERTY
+	             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif ()
 target_link_options(learning_c PRIVATE
-    -m64
+                    -m64
 )
 target_sources(learning_c PRIVATE
-    src/main.c
+               src/main.c
 )
 
 # target
@@ -134,38 +179,39 @@ add_executable(statements_and_arrays "")
 set_target_properties(statements_and_arrays PROPERTIES OUTPUT_NAME "statements_and_arrays")
 set_target_properties(statements_and_arrays PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(statements_and_arrays PRIVATE
-    statements_and_arrays/include
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
+                           statements_and_arrays/include
+                           build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(statements_and_arrays INTERFACE
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
+                           build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
 )
 target_compile_options(statements_and_arrays PRIVATE
-    $<$<COMPILE_LANGUAGE:C>:-m64>
-    $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+                       $<$<COMPILE_LANGUAGE:C>:-m64>
+                       $<$<COMPILE_LANGUAGE:CXX>:-m64>
+                       $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+                       $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
 )
-if(MSVC)
-    target_compile_options(statements_and_arrays PRIVATE $<$<CONFIG:Release>:-O2>)
-else()
-    target_compile_options(statements_and_arrays PRIVATE -O3)
-endif()
-if(MSVC)
-else()
-    target_compile_options(statements_and_arrays PRIVATE -fvisibility=hidden)
-endif()
-if(MSVC)
-    set_property(TARGET statements_and_arrays PROPERTY
-        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-endif()
+if (MSVC)
+	target_compile_options(statements_and_arrays PRIVATE $<$<CONFIG:Release>:-O2>)
+else ()
+	target_compile_options(statements_and_arrays PRIVATE -O3)
+endif ()
+if (MSVC)
+else ()
+	target_compile_options(statements_and_arrays PRIVATE -fvisibility=hidden)
+endif ()
+if (MSVC)
+	set_property(TARGET statements_and_arrays PROPERTY
+	             MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif ()
 target_link_options(statements_and_arrays PRIVATE
-    -m64
+                    -m64
 )
 target_sources(statements_and_arrays PRIVATE
-    statements_and_arrays/src/main.c
-    statements_and_arrays/src/exercise.c
-    statements_and_arrays/src/statements_and_array.c
+               statements_and_arrays/src/main.c
+               statements_and_arrays/src/exercise.c
+               statements_and_arrays/src/statements_and_array.c
 )
 

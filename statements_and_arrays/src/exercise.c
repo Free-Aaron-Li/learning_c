@@ -1,8 +1,8 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me
-//   know: <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me know:
+//   <communicate_aaron@outlook.com>.
 #include "exercise.h"
 
 
@@ -181,8 +181,8 @@ cards_are_dealt_randomly(void) {
 
     printf("Your hands: ");
     for (int i = 0; i < cards; ++i) {
-        const int suit = rand() / (RAND_MAX / 4);
-        const int rank = rand() / (RAND_MAX / 13);
+        const int suit = rand() / (RAND_MAX / 4 + 1);
+        const int rank = rand() / (RAND_MAX / 13 + 1);
 
         if (!in_hand[suit][rank]) {
             printf("%c%c ", ranks[rank], suits[suit]);
