@@ -4,6 +4,19 @@
 
 本项目主要用于学习 C 语言，包括但不限于 C 语言基础、C 语言进阶、数据结构与算法的 C 语言实现等。
 
+## 1.1 项目依赖
+
+编译本项目依赖于以下工具：
+
+|   工具    |   版本   |
+|:-------:|:------:|
+|   gcc   | 12.3.0 |
+|  cmake  | 3.15.0 |
+|  xmake  | 2.9.9  |
+| doxygen | 1.13.2 |
+
+推荐使用[CLion](https://www.jetbrains.com/clion/) IDE开发。
+
 # 2. 项目编译与运行
 
 本项目首次采用 [xmake](https://xmake.io/#/) 编译，可参照本项目的 [xmake.lua](./xmake.lua)
@@ -34,7 +47,19 @@ make
 
 编译生成的可执行文件存放在 bin/ 目录下。本项目默认生成 Linux 可执行文件。
 
-## 3. 参考
+# 3. 文档
+
+本项目通过[Doxygen](https://www.doxygen.nl/)管理文档，具体的`Doxygen`配置参考：[Doxyfile](Doxyfile)。
+
+通过执行命令得到项目详细文档：
+
+```shell
+doxygen
+```
+
+生成文件夹`doxygen`存放在项目根目录中，其中生成有`html`文件和`latex`文件。
+
+# 4. 参考
 
 [C语言程序设计：现代方法](https://book.douban.com/subject/35503091/)
 
