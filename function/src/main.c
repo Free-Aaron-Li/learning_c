@@ -1,8 +1,8 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me
-//   know: <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me know:
+//   <communicate_aaron@outlook.com>.
 #include "exercise.h"
 #include "function.h"
 
@@ -15,7 +15,9 @@ test(void) {
 
 void
 function(void) {
-    fibonacci();
+    // fibonacci();;
+    //hanoi();
+    queens();
 }
 
 

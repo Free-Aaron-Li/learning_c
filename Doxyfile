@@ -119,7 +119,8 @@ ALLOW_UNICODE_NAMES    = NO
 # Swedish, Turkish, Ukrainian and Vietnamese.
 # The default value is: English.
 
-OUTPUT_LANGUAGE        = English
+# OUTPUT_LANGUAGE        = English
+OUTPUT_LANGUAGE        = Chinese
 
 # If the BRIEF_MEMBER_DESC tag is set to YES, Doxygen will include brief member
 # descriptions after the members that are listed in the file and class
@@ -754,9 +755,8 @@ SORT_BY_SCOPE_NAME     = NO
 
 STRICT_PROTO_MATCHING  = NO
 
-# 这里移除“to\do”标签，防止IDE及Git误判
-# The GENERATE_TODOLIST tag can be used to enable (YES) or disable (NO) the to_do
-# list. This list is created by putting \to_do commands in the documentation.
+# The GENERATE_TODOLIST tag can be used to enable (YES) or disable (NO) the todo
+# list. This list is created by putting \todo commands in the documentation.
 # The default value is: YES.
 
 GENERATE_TODOLIST      = YES
@@ -1259,13 +1259,13 @@ STRIP_CODE_COMMENTS    = YES
 # entity all documented functions referencing it will be listed.
 # The default value is: NO.
 
-REFERENCED_BY_RELATION = NO
+REFERENCED_BY_RELATION = YES
 
 # If the REFERENCES_RELATION tag is set to YES then for each documented function
 # all documented entities called/used by that function will be listed.
 # The default value is: NO.
 
-REFERENCES_RELATION    = NO
+REFERENCES_RELATION    = YES
 
 # If the REFERENCES_LINK_SOURCE tag is set to YES and SOURCE_BROWSER tag is set
 # to YES then the hyperlinks from functions in REFERENCES_RELATION and
@@ -2506,7 +2506,7 @@ SEARCH_INCLUDES        = YES
 # RECURSIVE has no effect here.
 # This tag requires that the tag SEARCH_INCLUDES is set to YES.
 
-INCLUDE_PATH           =
+INCLUDE_PATH           = /usr/include
 
 # You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard
 # patterns (like *.h and *.hpp) to filter out the header-files in the
@@ -2514,7 +2514,8 @@ INCLUDE_PATH           =
 # used.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-INCLUDE_FILE_PATTERNS  = *.h
+INCLUDE_FILE_PATTERNS  = *.h \
+                         *.hpp
 
 # The PREDEFINED tag can be used to specify one or more macro names that are
 # defined before the preprocessor is started (similar to the -D option of e.g.
@@ -2562,7 +2563,7 @@ SKIP_FUNCTION_MACROS   = YES
 # the path). If a tag file is not located in the directory in which Doxygen is
 # run, you must also specify the path to the tagfile here.
 
-TAGFILES               =
+TAGFILES               = "static/cppreference-doxygen-web.tag.xml=http://en.cppreference.com/w/"
 
 # When a file name is specified after GENERATE_TAGFILE, Doxygen will create a
 # tag file that is based on the input files it reads. See section "Linking to

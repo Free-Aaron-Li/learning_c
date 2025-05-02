@@ -11,12 +11,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/** @brief 判断一个整数是否为素数。
+/**
+ * @file exercise.h
+ * @defgroup function_exercise_group function exercise
+ * @brief 基础练习功能模块。
+ * @details 主要包含：
+ * - @ref judgement_num_is_prime 判断素数；
+ * - @ref roll_the_dices_game 掷骰子游戏。
+ * @ingroup function_group
+ */
+
+/**
+ * @brief 判断一个整数是否为素数。
  * @details 用户输入整数，程序显示该数是否为素数。会话如下：
  * @code
  * Enter a number: 34
  * Not prime
  * @endcode
+ *
+ * @ingroup function_exercise_group
  */
 void judgement_num_is_prime(void);
 
@@ -38,6 +51,8 @@ void judgement_num_is_prime(void);
  * Play agin? y
  * You rolled: 6
  * @endcode
+ *
+ * @ingroup function_exercise_group
  */
 void roll_the_dices_game(void);
 

@@ -8,7 +8,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-/** @brief 判断是否为素数 */
+/**
+ * @brief 判断是否为素数
+ *
+ * @ingroup function_exercise_group
+ */
 bool
 is_prime(const int num) {
     for (int i = 2; i * i <= num; ++i) {
@@ -34,6 +38,8 @@ judgement_num_is_prime(void) {
 /**
  * @brief 掷骰子
  * @return 骰子值
+ *
+ * @ingroup function_exercise_group
  */
 int
 roll_dices(void) {
@@ -46,6 +52,8 @@ roll_dices(void) {
  * @param point 目标值
  * @param depth 递归调用最大深度
  * @return 游戏结果
+ *
+ * @ingroup function_exercise_group
  */
 bool
 play_game_second(const int point, int depth) {
@@ -65,7 +73,11 @@ play_game_second(const int point, int depth) {
     return play_game_second(point, --depth);
 }
 
-/** @brief 是否继续游戏 */
+/**
+ * @brief 是否继续游戏
+ *
+ * @ingroup function_exercise_group
+ */
 bool
 play_game(void) {
     const int dices = roll_dices();
@@ -80,7 +92,7 @@ play_game(void) {
     }
 
     printf("Your point is %d\n", dices);
-    const int depth = 100; /**< 最大尝试次数 */
+    const int depth = 100; /* 最大尝试次数 */
     return play_game_second(dices, depth);
 }
 
