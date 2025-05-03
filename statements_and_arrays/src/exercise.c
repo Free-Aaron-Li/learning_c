@@ -187,7 +187,7 @@ cards_are_dealt_randomly(void) {
         if (!in_hand[suit][rank]) {
             printf("%c%c ", ranks[rank], suits[suit]);
         } else {
-            --i;
+            --i; /* 重新发牌 */
         }
 
         in_hand[suit][rank] = true;

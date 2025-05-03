@@ -28,7 +28,11 @@
  * @section dependencies_sec 依赖
  *
  * - @see [<stdbool.h>](https://en.cppreference.com/w/c/header/stdbool)
+ * 调用标准Bool类型
  * - @see [<stdio.h>](https://en.cppreference.com/w/c/header/stdio)
+ * 调用标准输入输出函数
+ * - @see [<stdlib.h>](https://en.cppreference.com/w/c/header/stdlib)
+ * 调用标准退出函数
  *
  * @section usage_sec 使用方法
  * - 调用需要的功能函数。
@@ -42,6 +46,7 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @defgroup function_group function

@@ -111,3 +111,146 @@ roll_the_dices_game(void) {
 
     printf("Wins: %d Loses: %d", wins, loses);
 }
+
+/**
+ * @brief 读取牌值，提取需要的信息。
+ *
+ * @ingroup function_exercise_group
+ */
+void
+read_cards(void) {
+    /* 1. 清空所有牌 */
+    for (int i = 0; i < 4; ++i) {
+        num_in_suits[i] = 0;
+    }
+    for (int i = 0; i < 13; ++i) {
+        num_in_ranks[i] = 0;
+    }
+
+    /* 2. 发牌 */
+    bool in_hand[4][13] = { false };
+    int cards = 0; /**< 发牌数量 */
+    while (cards < 5) {
+        printf("Enter a card: ");
+        bool bad_card = false;
+        char card = getchar();
+        int rank;
+        switch (card) {
+            case '0': {
+                exit(EXIT_SUCCESS);
+            }
+            case '2': {
+                rank = 0;
+                break;
+            }
+            case '3': {
+                rank = 1;
+                break;
+            }
+            case '4': {
+                rank = 2;
+                break;
+            }
+            case '5': {
+                rank = 3;
+                break;
+            }
+            case '6': {
+                rank = 4;
+                break;
+            }
+            case '7': {
+                rank = 5;
+                break;
+            }
+            case '8': {
+                rank = 6;
+                break;
+            }
+            case '9': {
+                rank = 7;
+                break;
+            }
+            case 't':
+            case 'T': {
+                rank = 8;
+                break;
+            }
+            case 'j':
+            case 'J': {
+                rank = 9;
+                break;
+            }
+            case 'q':
+            case 'Q': {
+                rank = 10;
+                break;
+            }
+            case 'k':
+            case 'K': {
+                rank = 11;
+                break;
+            }
+            case 'a':
+            case 'A': {
+                rank = 12;
+                break;
+            }
+            default: {
+                bad_card = true;
+                break;
+            }
+        }
+
+        card = getchar();
+        int suit;
+        switch (card) {
+            case 'd':
+            case 'D': {
+                suit = 0;
+                break;
+            }
+            case 'c':
+            case 'C': {
+                suit = 1;
+                break;
+            }
+            case 'h':
+            case 'H': {
+                suit = 2;
+                break;
+            }
+            case 's':
+            case 'S': {
+                suit = 3;
+                break;
+            }
+            default: {
+                bad_card = true;
+                break;
+            }
+        }
+
+        if (bad_card) {
+            printf("Bad card; ignored.\n");
+        } else if (in_hand[suit][rank]) {
+            printf("Duplicate card; ignored.\n");
+        } else {
+            ++cards;
+            in_hand[suit][rank] = true;
+            ++num_in_suits[suit];
+            ++num_in_ranks[rank];
+        }
+    }
+}
+
+void analyze_hand(void);
+void print_result(void);
+void
+texas_holdem_game(void) {
+    for (;;) {
+        read_cards();
+        analyze_hand();
+        print_result();
+    }
+}

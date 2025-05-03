@@ -8,12 +8,8 @@
 
 编译本项目依赖于以下工具：
 
-|   工具    |   版本   |
-|:-------:|:------:|
-|   gcc   | 12.3.0 |
-|  cmake  | 3.15.0 |
-|  xmake  | 2.9.9  |
-| doxygen | 1.13.2 |
+| 工具 | 版本 | |:-------:|:------:doxygen -x filename| | gcc | 12.3.0 | | cmake | 3.15.0 | | xmake | 2.9.9 | |
+doxygen | 1.13.2 |
 
 推荐使用[CLion](https://www.jetbrains.com/clion/) IDE开发。
 
@@ -54,7 +50,10 @@ make
 通过执行命令得到项目详细文档：
 
 ```shell
+# 生成文档
 doxygen
+# 查看已修改配置
+doxygen -x Doxyfile
 ```
 
 生成文件夹`doxygen`存放在项目根目录中，其中生成有`html`文件和`latex`文件。
