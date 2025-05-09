@@ -10,20 +10,21 @@
 void
 test(void) {
     // judgement_num_is_prime();;
-    roll_the_dices_game();
+    // roll_the_dices_game();
+    texas_holdem_game();
 }
 
 void
 function(void) {
     // fibonacci();;
-    //hanoi();
+    // hanoi();
     queens();
 }
 
 
 int
 main(void) {
-    // test();
-    function();
+    test();
+    // function();
     exit(EXIT_SUCCESS);
 }

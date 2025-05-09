@@ -7,7 +7,10 @@
 #ifndef EXERCISE_H
 #define EXERCISE_H
 
-#include "function.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
  * @file exercise.h
@@ -127,42 +130,42 @@ void texas_holdem_game(void);
  *
  * @ingroup function_exercise_group
  */
-char num_in_suits[4];
+extern char num_in_suits[4];
 
 /**
  * @brief 数字牌数量
  * @details 其中用`T`表示数字10。
  * @ingroup function_exercise_group
  */
-char num_in_ranks[13];
+extern char num_in_ranks[13];
 
 /**
  * @brief 同花
  *
  * @ingroup function_exercise_group
  */
-bool flush;
+extern bool flush;
 
 /**
  * @brief 顺子
  *
  * @ingroup function_exercise_group
  */
-bool straight;
+extern bool straight;
 
 /**
  * @brief 四张
  *
  * @ingroup function_exercise_group
  */
-bool four;
+extern bool four;
 
 /**
  * @brief 三张
  *
  * @ingroup function_exercise_group
  */
-bool three;
+extern bool three;
 
 /**
  * @brief 对子
@@ -171,5 +174,5 @@ bool three;
  *
  * @ingroup function_exercise_group
  */
-int pairs;
+extern int pairs;
 #endif // EXERCISE_H

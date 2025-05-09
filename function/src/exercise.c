@@ -5,9 +5,6 @@
 //   <communicate_aaron@outlook.com>.
 #include "exercise.h"
 
-#include <stdlib.h>
-#include <time.h>
-
 /**
  * @brief 判断是否为素数
  *
@@ -244,8 +241,20 @@ read_cards(void) {
     }
 }
 
-void analyze_hand(void);
-void print_result(void);
+void
+analyze_hand(void) {}
+
+void
+print_result(void) {}
+
+char num_in_suits[4] = { 0 };
+char num_in_ranks[13] = { 0 };
+bool flush = false;
+bool straight = false;
+bool four = false;
+bool three = false;
+int pairs = 0;
+
 void
 texas_holdem_game(void) {
     for (;;) {

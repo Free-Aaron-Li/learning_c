@@ -13,7 +13,7 @@
  * @file function.h
  * @brief 数学问题与经典算法模块
  *
- * @mainpage Function 子模块文档
+ * @page Function 函数子模块文档
  *
  * @section intro_sec 概述
  *
