@@ -13,27 +13,28 @@ set_target_properties(expression PROPERTIES OUTPUT_NAME "expression")
 set_target_properties(expression PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(expression PRIVATE
     expression/include
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+    build/.gens/expression/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(expression INTERFACE
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
+    build/.gens/expression/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(expression PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(expression PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(expression PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(expression PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(expression PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(expression PRIVATE -O3)
+    target_compile_options(expression PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(expression PRIVATE -Zi)
 else()
-    target_compile_options(expression PRIVATE -fvisibility=hidden)
+    target_compile_options(expression PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET expression PROPERTY
@@ -54,27 +55,28 @@ set_target_properties(function PROPERTIES OUTPUT_NAME "function")
 set_target_properties(function PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(function PRIVATE
     function/include
-    build/.gens/function/linux/x86_64/release/platform/windows/idl
+    build/.gens/function/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(function INTERFACE
-    build/.gens/function/linux/x86_64/release/platform/windows/idl
+    build/.gens/function/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(function PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(function PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(function PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(function PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(function PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(function PRIVATE -O3)
+    target_compile_options(function PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(function PRIVATE -Zi)
 else()
-    target_compile_options(function PRIVATE -fvisibility=hidden)
+    target_compile_options(function PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET function PROPERTY
@@ -95,27 +97,28 @@ set_target_properties(io_and_char PROPERTIES OUTPUT_NAME "io_and_char")
 set_target_properties(io_and_char PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(io_and_char PRIVATE
     io_and_char/include
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+    build/.gens/io_and_char/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(io_and_char INTERFACE
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
+    build/.gens/io_and_char/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(io_and_char PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(io_and_char PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(io_and_char PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(io_and_char PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(io_and_char PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(io_and_char PRIVATE -O3)
+    target_compile_options(io_and_char PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(io_and_char PRIVATE -Zi)
 else()
-    target_compile_options(io_and_char PRIVATE -fvisibility=hidden)
+    target_compile_options(io_and_char PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET io_and_char PROPERTY
@@ -137,32 +140,33 @@ set_target_properties(learning_c PROPERTIES OUTPUT_NAME "learning_c")
 set_target_properties(learning_c PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 add_dependencies(learning_c pointer function statements_and_arrays expression io_and_char)
 target_include_directories(learning_c PRIVATE
-    build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
-    build/.gens/io_and_char/linux/x86_64/release/platform/windows/idl
-    build/.gens/expression/linux/x86_64/release/platform/windows/idl
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
-    build/.gens/function/linux/x86_64/release/platform/windows/idl
-    build/.gens/pointer/linux/x86_64/release/platform/windows/idl
+    build/.gens/learning_c/linux/x86_64/debug/platform/windows/idl
+    build/.gens/io_and_char/linux/x86_64/debug/platform/windows/idl
+    build/.gens/expression/linux/x86_64/debug/platform/windows/idl
+    build/.gens/statements_and_arrays/linux/x86_64/debug/platform/windows/idl
+    build/.gens/function/linux/x86_64/debug/platform/windows/idl
+    build/.gens/pointer/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(learning_c INTERFACE
-    build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
+    build/.gens/learning_c/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(learning_c PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(learning_c PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(learning_c PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(learning_c PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(learning_c PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(learning_c PRIVATE -O3)
+    target_compile_options(learning_c PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(learning_c PRIVATE -Zi)
 else()
-    target_compile_options(learning_c PRIVATE -fvisibility=hidden)
+    target_compile_options(learning_c PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET learning_c PROPERTY
@@ -181,27 +185,28 @@ set_target_properties(pointer PROPERTIES OUTPUT_NAME "pointer")
 set_target_properties(pointer PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(pointer PRIVATE
     pointer/include
-    build/.gens/pointer/linux/x86_64/release/platform/windows/idl
+    build/.gens/pointer/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(pointer INTERFACE
-    build/.gens/pointer/linux/x86_64/release/platform/windows/idl
+    build/.gens/pointer/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(pointer PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(pointer PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(pointer PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(pointer PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(pointer PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(pointer PRIVATE -O3)
+    target_compile_options(pointer PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(pointer PRIVATE -Zi)
 else()
-    target_compile_options(pointer PRIVATE -fvisibility=hidden)
+    target_compile_options(pointer PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET pointer PROPERTY
@@ -212,7 +217,8 @@ target_link_options(pointer PRIVATE
 )
 target_sources(pointer PRIVATE
     pointer/src/main.c
-    pointer/src/pointer.c
+    pointer/src/pointer_array.c
+    pointer/src/pointer_basic.c
 )
 
 # target
@@ -221,27 +227,28 @@ set_target_properties(statements_and_arrays PROPERTIES OUTPUT_NAME "statements_a
 set_target_properties(statements_and_arrays PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(statements_and_arrays PRIVATE
     statements_and_arrays/include
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
+    build/.gens/statements_and_arrays/linux/x86_64/debug/platform/windows/idl
 )
 target_include_directories(statements_and_arrays INTERFACE
-    build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
+    build/.gens/statements_and_arrays/linux/x86_64/debug/platform/windows/idl
 )
 target_compile_options(statements_and_arrays PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
-    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
-    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-G>
 )
+set_target_properties(statements_and_arrays PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(statements_and_arrays PRIVATE c_std_17)
 if(MSVC)
-    target_compile_options(statements_and_arrays PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(statements_and_arrays PRIVATE $<$<CONFIG:Debug>:-Od>)
 else()
-    target_compile_options(statements_and_arrays PRIVATE -O3)
+    target_compile_options(statements_and_arrays PRIVATE -O0)
 endif()
 if(MSVC)
+    target_compile_options(statements_and_arrays PRIVATE -Zi)
 else()
-    target_compile_options(statements_and_arrays PRIVATE -fvisibility=hidden)
+    target_compile_options(statements_and_arrays PRIVATE -g)
 endif()
 if(MSVC)
     set_property(TARGET statements_and_arrays PROPERTY

@@ -3,13 +3,18 @@
 //   This program is under the GPL-3.0 license.
 //   if you have not received it or the program has several bugs, please let me
 //   know: <communicate_aaron@outlook.com>.
-#include "pointer.h"
+#include "pointer_array.h"
+#include "pointer_basic.h"
 
 void
 test(void) {
+    /* basic */
     // const_pointer();
     // find_max_min_value();
-    get_formal_parameter_address();
+    // get_formal_parameter_address();
+
+    /* array */
+    array_pointer();
 }
 
 int
