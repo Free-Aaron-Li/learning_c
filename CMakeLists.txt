@@ -40,6 +40,9 @@ if(MSVC)
     set_property(TARGET expression PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(expression PRIVATE
+    m
+)
 target_link_options(expression PRIVATE
     -m64
 )
@@ -82,6 +85,9 @@ if(MSVC)
     set_property(TARGET function PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(function PRIVATE
+    m
+)
 target_link_options(function PRIVATE
     -m64
 )
@@ -124,6 +130,9 @@ if(MSVC)
     set_property(TARGET io_and_char PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(io_and_char PRIVATE
+    m
+)
 target_link_options(io_and_char PRIVATE
     -m64
 )
@@ -172,6 +181,9 @@ if(MSVC)
     set_property(TARGET learning_c PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(learning_c PRIVATE
+    m
+)
 target_link_options(learning_c PRIVATE
     -m64
 )
@@ -212,6 +224,9 @@ if(MSVC)
     set_property(TARGET pointer PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(pointer PRIVATE
+    m
+)
 target_link_options(pointer PRIVATE
     -m64
 )
@@ -254,6 +269,9 @@ if(MSVC)
     set_property(TARGET statements_and_arrays PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
+target_link_libraries(statements_and_arrays PRIVATE
+    m
+)
 target_link_options(statements_and_arrays PRIVATE
     -m64
 )

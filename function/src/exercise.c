@@ -1,8 +1,8 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me know:
-//   <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me
+//   know: <communicate_aaron@outlook.com>.
 #include "exercise.h"
 
 /**
@@ -107,6 +107,54 @@ roll_the_dices_game(void) {
     } while (again == 'y' || again == 'Y');
 
     printf("Wins: %d Loses: %d", wins, loses);
+}
+
+/**
+ * @brief 判断三角形三边是否可以构成三角形
+ *
+ * @param a @f$a@f$边长
+ * @param b @f$b@f$边长
+ * @param c @f$c@f$边长
+ *
+ * @return 如果可以构成三角形，返回true；否则返回false。
+ *
+ * @ingroup function_exercise_group
+ */
+bool
+is_triangle(const double a, const double b, const double c) {
+    return a + b > c && a + c > b && b + c > a;
+}
+
+/**
+ * @brief 获取三角形面积
+ * @details 利用海伦公式在使用 @ref is_triangle
+ *          函数判断@f$a@f$，@f$b@f$和@f$c@f$三边可以构成三角形的前提下。
+ *
+ * @param a @f$a@f$边长
+ * @param b @f$b@f$边长
+ * @param c @f$c@f$边长
+ *
+ * @return 三角形面积。
+ *
+ * @ingroup function_exercise_group
+ */
+double
+get_area(const double a, const double b, const double c) {
+    const double p = (a + b + c) / 2;
+    return sqrt(p * (p - a) * (p - b) * (p - c));
+}
+
+void
+get_triangular_area(void) {
+    double a, b, c;
+    printf("Please enter three sides length of a triangle: ");
+    scanf("%lf%lf%lf", &a, &b, &c);
+    if (is_triangle(a, b, c)) {
+        const double area = get_area(a, b, c);
+        printf("The area of the triangle is: %.2lf\n", area);
+    } else {
+        printf("The given three sides cannot form a triangle.\n");
+    }
 }
 
 /**

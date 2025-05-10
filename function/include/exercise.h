@@ -1,12 +1,13 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me
-//   know: <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me know:
+//   <communicate_aaron@outlook.com>.
 
 #ifndef EXERCISE_H
 #define EXERCISE_H
 
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,6 +20,7 @@
  * @details 主要包含：
  * - @ref judgement_num_is_prime 判断素数；
  * - @ref roll_the_dices_game 掷骰子游戏；
+ * - @ref get_triangular_area 计算三角形面积；
  * - @ref texas_holdem_game 德州扑克游戏。
  * @ingroup function_group
  */
@@ -57,6 +59,23 @@ void judgement_num_is_prime(void);
  * @ingroup function_exercise_group
  */
 void roll_the_dices_game(void);
+
+/**
+ * @brief 计算三角形面积
+ * @details 键盘录入三个边长（带小数），然后用海伦公式计算三角形的面积。
+ *          （如果它确实是一个三角形的话）
+ * @note 海伦公式求三角形面积：
+ *       给定三角形的三条边长为@f$a@f$，@f$b@f$和@f$c@f$，首先计算三角形的半周长@f$p@f$：
+ *       @f[
+ *       p = \frac{a+b+c}{2}
+ *       @f]
+ *       然后，使用海伦公式计算三角洲的面积@f$S@f$：
+ *       @f[
+ *       S = \sqrt{p \cdot (p-a) \cdot (p-b) \cdot (p-c)}
+ *       @f]
+ * @ingroup function_exercise_group
+ */
+void get_triangular_area(void);
 
 /**
  * @brief 德州扑克游戏

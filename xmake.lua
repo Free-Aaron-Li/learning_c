@@ -27,6 +27,10 @@ end
 -- 5. C++版本
 set_languages("c17")
 
+-- 6. 全局链接
+-- 6.1 链接数学库 libm
+add_links("m")
+
 -- 子项目配置
 -- 一、格式化输入输出
 target("io_and_char")
