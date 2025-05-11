@@ -11,8 +11,8 @@ void
 test(void) {
     // judgement_num_is_prime();;
     // roll_the_dices_game();
-    // texas_holdem_game();
-    get_triangular_area();
+    // get_triangular_area();
+    texas_holdem_game();
 }
 
 void

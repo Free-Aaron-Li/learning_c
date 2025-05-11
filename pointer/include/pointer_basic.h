@@ -21,7 +21,7 @@
  * @brief 演示常量指针和指针常量的使用
  *
  * @details 展示了两种类型的指针：常量指针（pointer to
- * constant）和指针常量（constant pointer）。
+ *          constant）和指针常量（constant pointer）。
  *         常量指针不能通过指针修改指向的值，而指针常量不能修改指针指向的地址。
  * @ingroup pointer_basic_group
  */

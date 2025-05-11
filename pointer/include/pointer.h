@@ -31,6 +31,7 @@
  * @section group_sec 模块划分
  * - @ref pointer_basic_group 指针基础模块
  * - @ref pointer_array_group 指针与数组模块
+ * - @ref pointer_string_group 指针与字符串模块
  *
  * @copyright Copyright (c) 2025. aaron.
  */
