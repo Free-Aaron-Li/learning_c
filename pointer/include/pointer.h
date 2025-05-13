@@ -16,14 +16,21 @@
  *
  * @section intro_sec 概述
  *
- * 本小节实现了一些指针方面的解决方案，旨在演示指针。
+ * 本小节实现了一些指针方面的解决方案，旨在演示指针及其应用。
  *
  * ### 包含的主要功能：
+ * - 基础内容：常指针、数组应用、函数形参；
+ * - 数组内容：指针操作数组；
+ * - 字符串内容：字符串使用，指针操作字符串。
  *
  * @section dependencies_sec 依赖
  *
  * - @see [<stdio.h>](https://en.cppreference.com/w/c/header/stdio)
- * 调用标准输入输出函数
+ *      - 调用标准输入输出函数
+ * - @see [<stdlib.h>](https://en.cppreference.com/w/c/header/stdlib)
+ *      - 调用标准退出函数
+ * - @see [<string.h>](https://en.cppreference.com/w/c/string/byte)
+ *      - 调用字符串操作函数
  *
  * @section usage_sec 使用方法
  * - 调用需要的功能函数。
@@ -37,5 +44,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #endif // POINTER_H

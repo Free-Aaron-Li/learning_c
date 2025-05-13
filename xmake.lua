@@ -22,14 +22,16 @@ add_cflags("-save-temps=obj")
 -- 所以xmake中没有提供对应的参数指令，如果需要在target中添加参数即可`add_cxflags("-O1")`
 if is_mode("debug") then
     set_optimize("none")
+    set_symbols("debug") -- 启用调试符号
 end
 
--- 5. C++版本
+-- 5. C 版本
 set_languages("c17")
 
 -- 6. 全局链接
 -- 6.1 链接数学库 libm
 add_links("m")
+add_includedirs("/usr/include")
 
 -- 子项目配置
 -- 一、格式化输入输出
@@ -69,4 +71,12 @@ target("learning_c")
 -- 设置生成目标为可执行文件
 set_kind("binary")
 add_files("src/main.c")
-add_deps("io_and_char","expression","statements_and_arrays","function","pointer")
+add_deps(
+    "io_and_char",
+    "expression",
+    "statements_and_arrays",
+    "function",
+    "pointer"
+)
+
+

@@ -5,6 +5,7 @@
 //   know: <communicate_aaron@outlook.com>.
 #include "pointer_array.h"
 #include "pointer_basic.h"
+#include "pointer_string.h"
 
 void
 test(void) {
@@ -14,7 +15,11 @@ test(void) {
     // get_formal_parameter_address();
 
     /* array */
-    array_pointer();
+    //array_pointer();
+
+    /* string */
+    //string_usage();
+    operating_string();
 }
 
 int

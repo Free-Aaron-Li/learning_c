@@ -1,4 +1,3 @@
-
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
@@ -13,14 +12,17 @@
  * @defgroup pointer_string_group string
  * @brief 指针与字符串模块。
  * @details 主要包含：
+ * - @ref string_usage 字符串的使用
  */
 
 /**
- * @brief 演示常量指针和指针常量的使用
- *
- * @details 展示了两种类型的指针：常量指针（pointer to
- *          constant）和指针常量（constant pointer）。
- *         常量指针不能通过指针修改指向的值，而指针常量不能修改指针指向的地址。
+ * @brief 展示字符串的不同用法和存储方式
+ * @details
+ * 演示了字符串的书写方式、存储方式、表示方法以及定义和初始化的区别；
+ * 通过示例代码展示字符串在内存中的存储和访问方式
  * @ingroup pointer_string_group
  */
+void string_usage(void);
+
+void operating_string(void);
 #endif // POINTER_STRING_H

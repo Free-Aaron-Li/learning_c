@@ -1,8 +1,8 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me know:
-//   <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me
+//   know: <communicate_aaron@outlook.com>.
 #include "exercise.h"
 
 /**
@@ -329,13 +329,13 @@ print_result(void) {
 }
 
 /* 初始化 */
-/*char num_in_suits[4] = { 0 };
+char num_in_suits[4] = { 0 };
 char num_in_ranks[13] = { 0 };
 bool flush = false;
 bool straight = false;
 bool four = false;
 bool three = false;
-int pairs = 0;*/
+int pairs = 0;
 
 void
 texas_holdem_game(void) {
