@@ -1,8 +1,8 @@
 //   Copyright (c) 2025. aaron.
 //
 //   This program is under the GPL-3.0 license.
-//   if you have not received it or the program has several bugs, please let me know:
-//   <communicate_aaron@outlook.com>.
+//   if you have not received it or the program has several bugs, please let me
+//   know: <communicate_aaron@outlook.com>.
 
 #ifndef EXERCISE_H
 #define EXERCISE_H
@@ -78,9 +78,12 @@ void roll_the_dices_game(void);
 void get_triangular_area(void);
 
 /**
- * @brief 德州扑克游戏
+ * @brief 模拟德州扑克游戏流程
  *
- * @details 写一个程序循环读取5张手牌（输入 0 结束程序）。
+* @details 写一个程序循环读取5张手牌（输入 0 结束程序）。
+*          通过无限循环模拟德州扑克游戏的主要流程。每轮游戏中，首先调用 @ref read_cards 函数读取玩家的手牌，
+ *         然后使用 @ref analyze_hand 分析手牌类型，最后通过 @ref print_result 打印分析结果。
+ *         游戏将持续运行，直到外部中断或程序终止。
  *
  * @note 德州扑克规则：
  * 手牌分类：同花顺、四张、葫芦、同花、顺子、三张、两对、一对、高牌。\n
