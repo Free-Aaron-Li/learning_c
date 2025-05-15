@@ -11,6 +11,20 @@
 /* @brief 获取数组的长度 */
 #define SIZE(a) (sizeof(a) / sizeof(a[0]))
 
+// 定义宏以临时屏蔽 GCC 的 -Wstringop-overflow 警告。
+// 这种警告通常出现在潜在的内存溢出操作中（例如 strcpy、memcpy 等）。
+// 使用此宏可以在特定代码块中禁用该警告，避免影响整个文件或项目的编译行为。
+#define DISABLE_WARNING_STRINGOP_OVERFLOW \
+    _Pragma("GCC diagnostic push")        \
+    _Pragma("GCC diagnostic ignored \"-Wstringop-overflow\"") // 忽略 -Wstringop-overflow 警告
+
+
+// 定义宏以恢复之前的诊断设置。
+// 在完成可能导致警告的代码后，调用此宏可以重新启用被禁用的警告。
+#define RESTORE_WARNING \
+    _Pragma("GCC diagnostic pop") // 恢复诊断设置
+
+
 /**
  * @brief 将数字转换为对应的十六进制字符
  * @details
@@ -200,8 +214,10 @@ operating_string(void) {
      * 弊端：不会检查数组越界！
      */
     char s3[] = "Hello";
-    const char* s4 = "World! Welcome! ";
-    strcpy(s3, s4);
+    const char* s4 = "World! Welcome!";
+    DISABLE_WARNING_STRINGOP_OVERFLOW
+    strcpy(s3, s4); /* 可能导致溢出 */
+    RESTORE_WARNING
     printf("s3: %s\n", s3); /* 数组越界 */
     /* 解决思路：strncpy */
     strncpy(s3, s4, sizeof(s3) - 1);
@@ -264,6 +280,7 @@ string_io(void) {
 void
 string_array(void) {
     /* 1. 使用二维数组存储字符串 */
+    // ReSharper disable once CppVariableCanBeMadeConstexpr
     const char planets[][8] = { "Mercury", "Venus", "Earth", "Mars",
                                 "Jupiter",
                                 "Saturn", "Uranus", "Neptune" };

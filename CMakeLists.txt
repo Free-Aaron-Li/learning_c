@@ -153,7 +153,7 @@ target_sources(io_and_char PRIVATE
 add_executable(learning_c "")
 set_target_properties(learning_c PROPERTIES OUTPUT_NAME "learning_c")
 set_target_properties(learning_c PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-add_dependencies(learning_c pointer function statements_and_arrays expression io_and_char)
+add_dependencies(learning_c structs_and_enum pointer function statements_and_arrays expression io_and_char)
 target_include_directories(learning_c PRIVATE
     /usr/include
     build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
@@ -162,6 +162,7 @@ target_include_directories(learning_c PRIVATE
     build/.gens/statements_and_arrays/linux/x86_64/release/platform/windows/idl
     build/.gens/function/linux/x86_64/release/platform/windows/idl
     build/.gens/pointer/linux/x86_64/release/platform/windows/idl
+    build/.gens/structs_and_enum/linux/x86_64/release/platform/windows/idl
 )
 target_include_directories(learning_c INTERFACE
     build/.gens/learning_c/linux/x86_64/release/platform/windows/idl
@@ -292,5 +293,50 @@ target_sources(statements_and_arrays PRIVATE
     statements_and_arrays/src/main.c
     statements_and_arrays/src/exercise.c
     statements_and_arrays/src/statements_and_array.c
+)
+
+# target
+add_executable(structs_and_enum "")
+set_target_properties(structs_and_enum PROPERTIES OUTPUT_NAME "structs_and_enum")
+set_target_properties(structs_and_enum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+target_include_directories(structs_and_enum PRIVATE
+    /usr/include
+    structs_and_enum/include
+    build/.gens/structs_and_enum/linux/x86_64/release/platform/windows/idl
+)
+target_include_directories(structs_and_enum INTERFACE
+    build/.gens/structs_and_enum/linux/x86_64/release/platform/windows/idl
+)
+target_compile_options(structs_and_enum PRIVATE
+    $<$<COMPILE_LANGUAGE:C>:-save-temps=obj>
+    $<$<COMPILE_LANGUAGE:C>:-m64>
+    $<$<COMPILE_LANGUAGE:CXX>:-m64>
+    $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CXX>:-DNDEBUG>
+    $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
+)
+set_target_properties(structs_and_enum PROPERTIES C_EXTENSIONS OFF)
+target_compile_features(structs_and_enum PRIVATE c_std_17)
+if(MSVC)
+    target_compile_options(structs_and_enum PRIVATE $<$<CONFIG:Release>:-O2>)
+else()
+    target_compile_options(structs_and_enum PRIVATE -O3)
+endif()
+if(MSVC)
+else()
+    target_compile_options(structs_and_enum PRIVATE -fvisibility=hidden)
+endif()
+if(MSVC)
+    set_property(TARGET structs_and_enum PROPERTY
+        MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
+target_link_libraries(structs_and_enum PRIVATE
+    m
+)
+target_link_options(structs_and_enum PRIVATE
+    -m64
+)
+target_sources(structs_and_enum PRIVATE
+    structs_and_enum/src/main.c
 )
 

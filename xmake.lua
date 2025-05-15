@@ -66,6 +66,12 @@ set_kind("binary")
 add_files("pointer/src/*.c")
 add_includedirs("pointer/include")
 
+-- 六、结构体和枚举
+target("structs_and_enum")
+set_kind("binary")
+add_files("structs_and_enum/src/*.c")
+add_includedirs("structs_and_enum/include")
+
 -- 主程序配置
 target("learning_c")
 -- 设置生成目标为可执行文件
@@ -76,7 +82,8 @@ add_deps(
     "expression",
     "statements_and_arrays",
     "function",
-    "pointer"
+    "pointer",
+    "structs_and_enum"
 )
 
 
