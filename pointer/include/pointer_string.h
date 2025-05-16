@@ -14,6 +14,8 @@
  * @brief 指针与字符串模块。
  * @details 主要包含：
  * - @ref string_usage 字符串的使用
+ * - @ref operating_string 字符串的操作
+ * - @ref string_io 字符串的输入输出
  */
 
 /**
