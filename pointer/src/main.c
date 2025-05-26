@@ -6,6 +6,8 @@
 #include "pointer_array.h"
 #include "pointer_basic.h"
 #include "pointer_string.h"
+#include "pointer_exercise.h"
+#include "pointer_malloc.h"
 
 
 void
@@ -22,7 +24,44 @@ test(void) {
     //string_usage();
     //operating_string();
     //string_io();
-    string_array();
+    //string_array();
+
+    /* malloc */
+    demonstrate_memory_allocation();
+}
+
+
+void
+exercise(void) {
+    /* exercise */
+    /* 1. 总秒数的时分秒转换 */
+    // const long total_sec = 30196;
+    // int        hour      = 0;
+    // int        minute    = 0;
+    // int        second    = 0;
+    // split_time(total_sec, &hour, &minute, &second);
+    // printf("total_sec = %ld, convert to: %.2d:%.2d:%.2d\n",
+    //        total_sec,
+    //        hour,
+    //        minute,
+    //        second);
+
+    /* 2. 求数组中第一第二大元素 */
+    // const int array_ints[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+    //                            15 };
+    // int largest        = 0;
+    // int second_largest = 0;
+    // find_two_largest(array_ints,
+    //                  SIZE(array_ints),
+    //                  &largest,
+    //                  &second_largest);
+    // printf("largest = %d, second_largest = %d\n", largest, second_largest);
+
+    /* 3. 逆转字符串 */
+    //reverse_print();
+
+    /* 4. 寻最大最小单词 */
+    find_max_min_word();
 }
 
 
@@ -43,7 +82,7 @@ main(const int argc, char* argv[]) {
     }
 
     /* 2. 参数转换 */
-    int i;
+    int    i;
     double d;
     if (argc < 3) {
         printf("Error!\n");
@@ -55,6 +94,7 @@ main(const int argc, char* argv[]) {
     sscanf(argv[2], "%lf", &d);
     printf("i: %d, d: %lf\n", i, d);
 
-    test();
+    //test();
+    exercise();
     return 0;
 }

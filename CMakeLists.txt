@@ -8,8 +8,7 @@ cmake_policy(SET CMP0091 NEW)
 project(expression LANGUAGES C)
 
 # target
-add_executable(expression ""
-               structs_and_enum/include/struct.h)
+add_executable(expression "")
 set_target_properties(expression PROPERTIES OUTPUT_NAME "expression")
 set_target_properties(expression PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(expression PRIVATE
@@ -243,8 +242,10 @@ target_link_options(pointer PRIVATE
                     -m64
 )
 target_sources(pointer PRIVATE
+               pointer/src/pointer_malloc.c
                pointer/src/main.c
                pointer/src/pointer_array.c
+               pointer/src/pointer_exercise.c
                pointer/src/pointer_string.c
                pointer/src/pointer_basic.c
 )
@@ -297,8 +298,7 @@ target_sources(statements_and_arrays PRIVATE
 )
 
 # target
-add_executable(structs_and_enum ""
-               structs_and_enum/src/struct.c)
+add_executable(structs_and_enum "")
 set_target_properties(structs_and_enum PROPERTIES OUTPUT_NAME "structs_and_enum")
 set_target_properties(structs_and_enum PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 target_include_directories(structs_and_enum PRIVATE
@@ -339,6 +339,9 @@ target_link_options(structs_and_enum PRIVATE
                     -m64
 )
 target_sources(structs_and_enum PRIVATE
+               structs_and_enum/src/st_and_em_exercise.c
                structs_and_enum/src/main.c
+               structs_and_enum/src/enum.c
+               structs_and_enum/src/struct.c
 )
 

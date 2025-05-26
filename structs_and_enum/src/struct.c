@@ -26,13 +26,6 @@ input_stu_data(struct Student* s) {
 }
 
 
-/**
- * @brief 打印学生信息。
- * @details 根据传入的学生结构体指针，打印学生的学号、姓名、性别及各科成绩。
- * @ingroup struct_group
- * @param s 指向学生结构体的常量指针，包含学生的基本信息及成绩数据。
- * @return 无返回值。
- */
 void
 print_stu_info(const struct Student* s) {
     /* 书写方式一 */

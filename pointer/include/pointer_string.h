@@ -35,7 +35,6 @@ void string_usage(void);
  */
 void operating_string(void);
 
-
 /**
  * @brief 展示字符串的输入与输出操作
  * @details

@@ -27,9 +27,12 @@
  * - @see [<stdio.h>](https://en.cppreference.com/w/c/header/stdio)
  *      - 调用标准输入输出函数
  * - @see [<stdlib.h>](https://en.cppreference.com/w/c/header/stdlib)
- *      - 调用标准退出函数
+ *      - 调用标准退出函数；
+ *      - 内存分配函数
  * - @see [<string.h>](https://en.cppreference.com/w/c/string/byte)
  *      - 调用字符串操作函数
+ * - @see [<ctype.h>](https://en.cppreference.com/w/cpp/locale/ctype)
+ *      - 调用字符判断函数
  *
  * @section usage_sec 使用方法
  * - 调用需要的功能函数。
@@ -38,6 +41,7 @@
  * - @ref pointer_basic_group 指针基础模块
  * - @ref pointer_array_group 指针与数组模块
  * - @ref pointer_string_group 指针与字符串模块
+ * - @ref pointer_exercise_group 指针与字符串练习模块
  *
  * @copyright Copyright (c) 2025. aaron.
  */
@@ -45,5 +49,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
 
 #endif // POINTER_H
