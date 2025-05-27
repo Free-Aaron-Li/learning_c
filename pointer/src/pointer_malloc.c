@@ -9,17 +9,15 @@
 void
 demonstrate_memory_allocation() {
     /* 利用栈上指针变量访问堆上数据 */
-    /* malloc: memory + allocate */
+    /* 1. malloc: memory + allocate */
     int* p = malloc(sizeof(int) * 100);
     printf("Address of p: %p\n", (void*) &p);
 
-    /* calloc: clear + allocate */
+    /* 2. calloc: clear + allocate */
     int* p1 = calloc(10000000000000, sizeof(int));
     printf("Address of p: %p\n", p1); /* 申请失败，返回空指针 */
 
-    /* realloc:  */
-
+    /* 3. free memory */
     free(p);
     free(p1);
-    return;
 }

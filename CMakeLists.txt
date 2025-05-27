@@ -248,6 +248,7 @@ target_sources(pointer PRIVATE
     pointer/src/pointer_array.c
     pointer/src/pointer_exercise.c
     pointer/src/pointer_string.c
+    pointer/src/sll.c
     pointer/src/pointer_basic.c
 )
 

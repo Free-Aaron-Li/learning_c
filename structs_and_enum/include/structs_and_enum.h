@@ -32,10 +32,9 @@
  * - 调用需要的功能函数。
  *
  * @section group_sec 模块划分
- * - @ref struct_group 结构体模块；
- * - @ref enum_group 枚举模块；
- * - @ref exercise_se_group 练习模块；
- * - @ref vector_group 自定义向量模块。
+ * - @ref struct_group 结构体模块
+ * - @ref enum_group 枚举模块
+ * - @ref exercise_se_group 练习模块
  *
  * @copyright Copyright (c) 2025. aaron.
  */

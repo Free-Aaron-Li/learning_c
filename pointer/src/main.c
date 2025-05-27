@@ -9,6 +9,7 @@
 #include "pointer_exercise.h"
 #include "pointer_malloc.h"
 #include "vector.h"
+#include "sll.h"
 
 
 void
@@ -28,7 +29,7 @@ test(void) {
     //string_array();
 
     /* malloc */
-    demonstrate_memory_allocation();
+    //demonstrate_memory_allocation();
 }
 
 
@@ -77,7 +78,16 @@ vector() {
         printf("%d ", v->elements[i]);
     }
     vector_destroy(v);
-    return;
+}
+
+
+void
+sll() {
+    Node* head = NULL;
+    add_node(&head, 3);
+    add_node(&head, 2);
+    add_node(&head, 1);
+    printf("%d\n", head->data);
 }
 
 
@@ -112,6 +122,7 @@ main(const int argc, char* argv[]) {
 
     //test();
     //exercise();
-    vector();
+    //vector();
+    sll();
     return 0;
 }

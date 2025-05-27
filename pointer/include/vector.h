@@ -12,7 +12,10 @@
  * @defgroup vector_group vector
  * @brief 自定义向量模块。
  * @details 主要包含：
- * - @ref
+ * - @ref Vector 动态数组
+ * - @ref vector_create 创建动态数组实例
+ * - @ref vector_destroy 销毁动态数组实例
+ * - @ref push_back 添加元素
  */
 
 #include <stdlib.h>
@@ -36,14 +39,11 @@ typedef int E;
  * - size：当前存储的元素个数。\n
  * - capacity：数组的最大容量。\n
  * @ingroup vector_group
- * @param elements 指向堆空间的数组，用于存储数据。
- * @param size 当前存储的元素个数。
- * @param capacity 数组的最大容量。
  */
 typedef struct {
-    E*  elements; /**< 指向堆空间的数组 */
-    int size;     /**< 元素个数 */
-    int capacity; /**< 数组容量 */
+    E*     elements; /* 指向堆空间的数组 */
+    size_t size;     /* 元素个数 */
+    size_t capacity; /* 数组容量 */
 } Vector;
 
 /**

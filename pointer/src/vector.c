@@ -42,9 +42,9 @@ vector_destroy(Vector* v) {
  */
 void
 grow_capacity(Vector* v) {
-    const int new_capacity = (v->capacity < MAX_PREALLOC
-                                  ? (v->capacity << 1)
-                                  : (v->capacity + MAX_PREALLOC));
+    const size_t new_capacity = (v->capacity < MAX_PREALLOC
+                                     ? (v->capacity << 1)
+                                     : (v->capacity + MAX_PREALLOC));
     /* 错误：realloc失败返回空指针，且旧内存块不会被释放。造成内存泄露 */
     // vector->elements = realloc(vector->elements, new_capacity * sizeof(E));
     E* p = realloc(v->elements, new_capacity * sizeof(E));
