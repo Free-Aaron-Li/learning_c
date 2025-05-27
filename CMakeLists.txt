@@ -242,6 +242,7 @@ target_link_options(pointer PRIVATE
     -m64
 )
 target_sources(pointer PRIVATE
+    pointer/src/vector.c
     pointer/src/pointer_malloc.c
     pointer/src/main.c
     pointer/src/pointer_array.c
@@ -340,7 +341,6 @@ target_link_options(structs_and_enum PRIVATE
 )
 target_sources(structs_and_enum PRIVATE
     structs_and_enum/src/st_and_em_exercise.c
-    structs_and_enum/src/vector.c
     structs_and_enum/src/main.c
     structs_and_enum/src/enum.c
     structs_and_enum/src/struct.c

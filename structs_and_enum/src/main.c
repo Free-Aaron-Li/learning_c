@@ -6,7 +6,6 @@
 #include "enum.h"
 #include "st_and_em_exercise.h"
 #include "struct.h"
-#include "vector.h"
 
 /** 求数组长度 */
 #define SIZE(a)(sizeof(a)/sizeof(a[0]))
@@ -28,25 +27,9 @@ exercise(void) {
 }
 
 
-void
-vector() {
-    /* Vector整体流程 */
-    Vector* v = vector_create(); /* 创建空的动态数组 */
-    for (int i = 1; i <= 100; ++i) {
-        push_back(v, i * 10);
-    }
-    for (int i = 0; i < v->size; ++i) {
-        printf("%d ", v->elements[i]);
-    }
-    vector_destroy(v);
-    return;
-}
-
-
 int
 main(void) {
     //test();
     //exercise();
-    vector();
     exit(EXIT_SUCCESS);
 }

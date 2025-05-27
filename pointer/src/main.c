@@ -8,6 +8,7 @@
 #include "pointer_string.h"
 #include "pointer_exercise.h"
 #include "pointer_malloc.h"
+#include "vector.h"
 
 
 void
@@ -65,6 +66,21 @@ exercise(void) {
 }
 
 
+void
+vector() {
+    /* Vector整体流程 */
+    Vector* v = vector_create(); /* 创建空的动态数组 */
+    for (int i = 1; i <= 100; ++i) {
+        push_back(v, i * 10);
+    }
+    for (int i = 0; i < v->size; ++i) {
+        printf("%d ", v->elements[i]);
+    }
+    vector_destroy(v);
+    return;
+}
+
+
 int
 main(const int argc, char* argv[]) {
     /* 命令行参数
@@ -95,6 +111,7 @@ main(const int argc, char* argv[]) {
     printf("i: %d, d: %lf\n", i, d);
 
     //test();
-    exercise();
+    //exercise();
+    vector();
     return 0;
 }
