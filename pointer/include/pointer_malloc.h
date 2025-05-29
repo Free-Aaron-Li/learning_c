@@ -14,6 +14,7 @@
  * @defgroup pointer_malloc_group malloc
  * @brief 动态内存分配
  * @details 主要包含：
+ * - @ref demonstrate_memory_allocation 演示内存分配
  */
 
 

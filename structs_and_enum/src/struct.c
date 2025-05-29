@@ -5,6 +5,8 @@
 //   know: <communicate_aaron@outlook.com>.
 #include "struct.h"
 
+#include <string.h>
+
 
 /**
  * @brief 输入学生数据。
@@ -79,4 +81,78 @@ using_struct(void) {
     struct Student s3;
     input_stu_data(&s3);
     print_stu_info(&s3);
+}
+
+
+/**
+ * @brief 比较用户成绩及姓名。
+ * @details
+ * 对总分、语文、数学、外语分别进行由高到低比较；
+ * 对姓名按照字典顺序排序。
+ * @ingroup struct_group
+ * @return 比较值，p1大于（小于）p2返回负值（正值），p1等于p2返回0。
+ */
+int
+compare(const void* p1, const void* p2) {
+    /* 通用指针可以转换为任何类型指针 */
+    const struct Student* s1 = p1;
+    const struct Student* s2 = p2;
+
+    const int total1 = s1->_chinese + s1->_math + s1->_english;
+    const int total2 = s2->_chinese + s2->_math + s2->_english;
+
+    /* 总分越高，应该排在前面，逻辑上越小 */
+    if (total1 != total2) {
+        /* 逆向排序，调用qsort时要交换顺序 */
+        return total2 - total1;
+    }
+    if (s1->_chinese != s2->_chinese) {
+        return s2->_chinese - s1->_chinese;
+    }
+    if (s1->_math != s2->_math) {
+        return s2->_math - s1->_math;
+    }
+    /* 冗余操作，可以忽略
+     * 存在相关性：总分=语数外之和
+     * 但是后续扩展，此相关性可能会被打破
+     */
+    if (s1->_english != s2->_english) {
+        return s2->_english - s1->_english;
+    }
+
+    return strcmp(s1->_name, s2->_name);
+}
+
+
+void
+sorting_score(void) {
+    struct Student students[5];
+    char           temp[25];
+
+    /* 1. 输入 */
+    for (int i = 0; i < 5; ++i) {
+        scanf("%d%s%d%d%d",
+              &students[i]._number,
+              temp,
+              &students[i]._chinese,
+              &students[i]._math,
+              &students[i]._english);
+        strcpy(students[i]._name, temp);
+    }
+
+    /* 2. 比较 */
+    qsort(students, 5, sizeof(struct Student), compare);
+
+    /* 3. 输出 */
+    for (int i = 0; i < 5; ++i) {
+        const int total = students[i]._chinese + students[i]._math +
+                          students[i]._english;
+        printf("total: %d, chinese: %d, math: %d, english: %d, name: %s.\n",
+               total,
+               students[i]._chinese,
+               students[i]._math,
+               students[i]._english,
+               students[i]._name
+            );
+    }
 }

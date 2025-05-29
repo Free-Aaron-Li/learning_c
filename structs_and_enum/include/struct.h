@@ -14,8 +14,9 @@
  * @defgroup struct_group struct
  * @brief 结构体模块。
  * @details 主要包含：
- * - @ref using_struct 结构体的演示；
- * - @ref Student 学生信息。
+ * - @ref using_struct 结构体的演示
+ * - @ref Student 学生信息
+ * - @ref sorting_score 学生成绩排序
  */
 
 /**
@@ -65,4 +66,14 @@ print_stu_info(const struct Student* s);
  */
 void using_struct(void);
 
+
+/**
+ * @brief 成绩排序。
+ * @details
+ * 从键盘中录入5个学生的信息，然后对学生进行排序。排序规则如下：
+ * 先按总分从高到低排序，如果总分一样，依次按语文、数学、英语的分数从
+ * 高到低进行排序；如果各科成绩都一样，则按照名字的字典顺序从小到大进行排序。
+ * @ingroup struct_group
+ */
+void sorting_score(void);
 #endif // STRUCT_H

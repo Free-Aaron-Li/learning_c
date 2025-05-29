@@ -41,8 +41,10 @@
  * - @ref pointer_basic_group 指针基础模块
  * - @ref pointer_array_group 指针与数组模块
  * - @ref pointer_string_group 指针与字符串模块
+ * - @ref pointer_func_group 函数指针模块
  * - @ref pointer_exercise_group 指针与字符串练习模块
- * - @ref vector_group 自定义向量模块。
+ * - @ref vector_group 自定义向量模块
+ * - @ref sll_group 单链表模块
  *
  * @copyright Copyright (c) 2025. aaron.
  */

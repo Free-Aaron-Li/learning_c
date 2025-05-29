@@ -12,7 +12,8 @@
  * @defgroup sll_group single_linked_list
  * @brief 单链表模块。
  * @details 主要包含：
- * - @ref Vector 动态数组
+ * - @ref Node 单链表节点
+ * - @ref add_node 插入节点
  */
 
 #include <stdio.h>

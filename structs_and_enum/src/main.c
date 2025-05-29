@@ -15,6 +15,7 @@ void
 test(void) {
     /* using struct */
     //using_struct();
+    sorting_score();
 
     /* using enum */
     //using_enum();
@@ -29,7 +30,7 @@ exercise(void) {
 
 int
 main(void) {
-    //test();
+    test();
     //exercise();
     exit(EXIT_SUCCESS);
 }

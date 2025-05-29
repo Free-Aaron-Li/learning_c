@@ -8,6 +8,7 @@
 #include "pointer_string.h"
 #include "pointer_exercise.h"
 #include "pointer_malloc.h"
+#include "pointer_func.h"
 #include "vector.h"
 #include "sll.h"
 
@@ -30,6 +31,9 @@ test(void) {
 
     /* malloc */
     //demonstrate_memory_allocation();
+
+    /* function */
+    demonstrate_func_ptr();
 }
 
 
@@ -120,9 +124,9 @@ main(const int argc, char* argv[]) {
     sscanf(argv[2], "%lf", &d);
     printf("i: %d, d: %lf\n", i, d);
 
-    //test();
+    test();
     //exercise();
     //vector();
-    sll();
+    // sll();
     return 0;
 }

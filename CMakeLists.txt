@@ -245,6 +245,7 @@ target_sources(pointer PRIVATE
     pointer/src/vector.c
     pointer/src/pointer_malloc.c
     pointer/src/main.c
+    pointer/src/pointer_func.c
     pointer/src/pointer_array.c
     pointer/src/pointer_exercise.c
     pointer/src/pointer_string.c

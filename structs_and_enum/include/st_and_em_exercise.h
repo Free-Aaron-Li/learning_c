@@ -15,7 +15,7 @@
  * @defgroup exercise_se_group exercise
  * @brief 结构体与枚举的练习
  * @details 主要包含：
- * - @ref struct_exercise 结构体练习。
+ * - @ref struct_exercise 结构体练习
  */
 
 /**
